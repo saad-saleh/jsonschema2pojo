@@ -1,0 +1,143 @@
+﻿{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "Links.json",
+    "title": "Link",
+    "description": "The Link component, holds the structure for the links",
+    "type": "object",
+    "properties": {
+        "_links": {
+            "title": "HAL Links",
+            "description": "Object of links with the rels as the keys",
+            "type": "object",
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "title": "HAL Link Object",
+                        "description": "An object with link information",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "title": "Name",
+                                "description": "Name of a resource, link, action, etc.",
+                                "type": "string"
+                            },
+                            "href": {
+                                "anyOf": [
+                                    {
+                                        "href": {
+                                            "title": "HREF",
+                                            "description": "A hyperlink URL",
+                                            "type": "string"
+                                        }
+                                    },
+                                    {
+                                        "hrefTemplated": {
+                                            "title": "Templated HREF",
+                                            "description": "A hyperlink that is a URI template (RFC 6570)",
+                                            "type": "string"
+                                        }
+                                    }
+                                ]
+                            },
+                            "templated": {
+                                "title": "Is URI Templated?",
+                                "description": "Specifies whether or not a link is using URI templates",
+                                "type": "boolean"
+                            },
+                            "type": {
+                                "title": "Media Type",
+                                "description": "A media type",
+                                "type": "string"
+                            },
+                            "deprecation": {
+                                "title": "Is URI Deprecated?",
+                                "description": "Specifies whether or not a link is deprecated",
+                                "type": "boolean"
+                            }
+                        },
+                        "required": [
+                            "href"
+                        ]
+                    },
+                    {
+                        "title": "HAL Link Array",
+                        "description": "An array of linkObjects of the same link relation",
+                        "type": "array",
+                        "items": {
+                            "linkObject": {
+                                "title": "HAL Link Object",
+                                "description": "An object with link information",
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "title": "Name",
+                                        "description": "Name of a resource, link, action, etc.",
+                                        "type": "string"
+                                    },
+                                    "href": {
+                                        "anyOf": [
+                                            {
+                                                "href": {
+                                                    "title": "HREF",
+                                                    "description": "A hyperlink URL",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            {
+                                                "hrefTemplated": {
+                                                    "title": "Templated HREF",
+                                                    "description": "A hyperlink that is a URI template (RFC 6570)",
+                                                    "type": "string"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "templated": {
+                                        "title": "Is URI Templated?",
+                                        "description": "Specifies whether or not a link is using URI templates",
+                                        "type": "boolean"
+                                    },
+                                    "type": {
+                                        "title": "Media Type",
+                                        "description": "A media type",
+                                        "type": "string"
+                                    },
+                                    "deprecation": {
+                                        "title": "Is URI Deprecated?",
+                                        "description": "Specifies whether or not a link is deprecated",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "href"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "_embedded": {
+            "title": "HAL Embedded Resource",
+            "description": "An embedded HAL resource",
+            "type": "object",
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "$ref": "#"
+                    },
+                    {
+                        "embeddedArray": {
+                            "title": "HAL Embedded Array",
+                            "description": "An array of embedded resources with the same link relation",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

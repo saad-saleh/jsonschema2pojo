@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "Components.json",
+    "title": "Components",
+    "description": "The basic components used.",
+    "type": "object",
+    "properties": {
+        "classType": {
+            "type": "object",
+            "description": "Class Object.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Class Name."
+                },
+                "grade": {
+                    "type": "string",
+                    "description": "The currency of the amount.."
+                }
+            },
+            "required": [
+                "name"
+            ]
+        }
+    }
+}

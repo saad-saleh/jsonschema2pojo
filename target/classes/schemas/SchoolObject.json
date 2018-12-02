@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "SchoolObject.json",
+    "title": "SchoolObject",
+    "description": "This is sample school object described in JSON schema and references other objects.",
+    "properties": {
+        "_links": {
+            "type": "array",
+            "items": {
+                "$ref": "./files/Links.json#/properties/_links"
+            }
+        },
+        "classes": {
+            "type": "array",
+            "description": "The set of classes under school.",
+            "minItems": 0,
+            "items": {
+                "$ref": "./files/Components.json#/properties/classType"
+            }
+        }
+    }
+}
